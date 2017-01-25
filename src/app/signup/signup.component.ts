@@ -34,17 +34,26 @@ export class SignupComponent implements OnInit {
     this.fb.auth.createUser({ email: this.email, password: this.password })
       .then(data => {
         console.log('SignUP', data);
-        // this.router.navigate(['/login']);
         // Email and password
-        this.fb.auth.login({
-          email: this.email,
-          password: this.password,
-        },
+        this.fb.auth.login(
+          {
+            email: this.email,
+            password: this.password,
+          },
           {
             provider: AuthProviders.Password,
             method: AuthMethods.Password,
           })
-          .then(data => console.log('Login', data))
+          .then(data => {
+            console.log('Login', data);
+            const itemObservable = this.fb.database.object('/users');
+            itemObservable.set({ fullname: this.name, email: this.email, type: this.selectedType })
+              .then(dS => {
+                console.log('itemObservable', dS)
+                // this.router.navigate(['/login']);
+
+              });
+          })
 
       })
       .catch(function (error) {
