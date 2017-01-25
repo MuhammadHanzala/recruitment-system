@@ -7,8 +7,8 @@ import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 
 })
 export class LoginComponent implements OnInit {
 
-  email: String;
-  password: String;
+  email: string;
+  password: string;
 
 
   constructor(public fb: AngularFire) {
@@ -21,14 +21,16 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.email, ' ', this.password)
     // Email and password
-    // this.fb.auth.login({
-    //   email: 'email@example.com',
-    //   password: 'password',
-    // },
-    //   {
-    //     provider: AuthProviders.Password,
-    //     method: AuthMethods.Password,
-    //   });
+    this.fb.auth.login({
+      email: this.email,
+      password: this.password,
+    },
+      {
+        provider: AuthProviders.Password,
+        method: AuthMethods.Password,
+      })
+      .then(data => console.log('Login', data))
+
   }
 
 }

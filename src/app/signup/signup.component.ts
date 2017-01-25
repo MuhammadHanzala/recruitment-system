@@ -34,7 +34,18 @@ export class SignupComponent implements OnInit {
     this.fb.auth.createUser({ email: this.email, password: this.password })
       .then(data => {
         console.log('SignUP', data);
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
+        // Email and password
+        this.fb.auth.login({
+          email: this.email,
+          password: this.password,
+        },
+          {
+            provider: AuthProviders.Password,
+            method: AuthMethods.Password,
+          })
+          .then(data => console.log('Login', data))
+
       })
       .catch(function (error) {
         // Handle Errors here.
