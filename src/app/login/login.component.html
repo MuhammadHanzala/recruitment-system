@@ -1,14 +1,30 @@
-<p>
-  login works!
-</p>
+<md-card>
+  <!--<md-card-subtitle>Login</md-card-subtitle>-->
+  <md-card-title>Login</md-card-title>
+  <md-card-content>
+    <p>
+      <md-input-container class="example-full-width">
+        <input md-input [(ngModel)]="email">
+      </md-input-container>
+    </p>
+    <p>
+      
+      <md-input-container>
+        <input md-input [(ngModel)]="email">
+      </md-input-container>
+    </p>
+    <p>
+      
+      <md-input-container>
+        <input md-input [(ngModel)]="password">
+      </md-input-container>
 
-<md-input-container>
-  <input md-input
-         placeholder="Character count (100 max)"
-         maxlength="100"
-         value="Hello world. How are you?"
-         #characterCountHintExample>
-  <md-hint align="end">{{characterCountHintExample.value.length}} / 100</md-hint>
-</md-input-container>
-
-<a [routerLink]="signup">SignUp</a>
+    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad</p>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button (click)="login()">Login</button>
+    <button md-button>SHARE</button>
+  </md-card-actions>
+</md-card>

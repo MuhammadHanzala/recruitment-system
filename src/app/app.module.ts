@@ -10,6 +10,7 @@ import { MaterialModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ForgotComponent } from './forgot/forgot.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -24,7 +25,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,

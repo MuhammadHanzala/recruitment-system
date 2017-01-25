@@ -1,16 +1,15 @@
-<h1>
-  {{title}}
-</h1>
-
-<button md-button routerLink="/login" routerLinkActive="active" color="primary">Login</button>
-<button md-raised-button routerLink="/signup" routerLinkActive="active" color="primary">Signup</button>
-<hr>
-<a routerLink="/login" routerLinkActive="active">Login</a>
-<a routerLink="/signup" routerLinkActive="active">Signup</a>
-
+<!--
 <ul>
   <li class="text" *ngFor="let item of items$ | async">
     {{item.$value}}
   </li>
-</ul>
+</ul>-->
+<md-toolbar color="primary">
+  <!--<md-toolbar-row>-->
+    <span>Recruitment System</span>
+  <!--</md-toolbar-row>-->
+</md-toolbar>
+<button md-button routerLink="/login" routerLinkActive="active" color="primary">Login</button>
+<button md-raised-button routerLink="/signup" routerLinkActive="active" color="primary">Signup</button>
+
 <router-outlet></router-outlet>
