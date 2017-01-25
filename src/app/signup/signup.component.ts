@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
           })
           .then(data => {
             console.log('Login', data);
-            const itemObservable = this.fb.database.object('/users');
+            const itemObservable = this.fb.database.object('/users/'+data.uid);
             itemObservable.set({ fullname: this.name, email: this.email, type: this.selectedType })
               .then(dS => {
                 console.log('itemObservable', dS)
