@@ -21,14 +21,14 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.email, ' ', this.password)
     // Email and password
-    this.fb.auth.login({
-      email: 'email@example.com',
-      password: 'password',
-    },
-      {
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password,
-      });
+    // this.fb.auth.login({
+    //   email: 'email@example.com',
+    //   password: 'password',
+    // },
+    //   {
+    //     provider: AuthProviders.Password,
+    //     method: AuthMethods.Password,
+    //   });
   }
 
 }

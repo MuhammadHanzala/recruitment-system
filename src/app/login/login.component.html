@@ -2,29 +2,21 @@
   <!--<md-card-subtitle>Login</md-card-subtitle>-->
   <md-card-title>Login</md-card-title>
   <md-card-content>
-    <p>
-      <md-input-container class="example-full-width">
-        <input md-input [(ngModel)]="email">
-      </md-input-container>
-    </p>
-    <p>
-      
-      <md-input-container>
-        <input md-input [(ngModel)]="email">
-      </md-input-container>
-    </p>
-    <p>
-      
-      <md-input-container>
-        <input md-input [(ngModel)]="password">
-      </md-input-container>
 
+    <p>
+      <md-input-container>
+        <input md-input [(ngModel)]="email" placeholder="Email" type="text">
+      </md-input-container>
     </p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut
-      enim ad</p>
+
+    <p>
+      <md-input-container>
+        <input md-input [(ngModel)]="password" placeholder="Password" type="password">
+      </md-input-container>
+    </p>
+
   </md-card-content>
   <md-card-actions>
     <button md-button (click)="login()">Login</button>
-    <button md-button>SHARE</button>
   </md-card-actions>
 </md-card>

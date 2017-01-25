@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,7 @@ export class SignupComponent implements OnInit {
     { value: 'company', viewValue: 'Company' }
   ];
 
-  constructor(public fb: AngularFire) {
+  constructor(public fb: AngularFire, private router: Router) {
     this.email = 'adnanshurta@gmail.com'
     this.password = 'password'
 
@@ -33,11 +34,11 @@ export class SignupComponent implements OnInit {
     this.fb.auth.createUser({ email: this.email, password: this.password })
       .then(data => {
         console.log('SignUP', data);
-        alert(data);
+        this.router.navigate(['/login']);
       })
       .catch(function (error) {
         // Handle Errors here.
-        var errorCode = error.code;
+        // var errorCode = error.code;
         var errorMessage = error.message;
         console.log(error);
         // ...
