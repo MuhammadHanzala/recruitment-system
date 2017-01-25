@@ -11,6 +11,9 @@ import { AngularFireModule } from 'angularfire2';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotComponent } from './forgot/forgot.component';
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CompanyComponent } from './company/company.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -26,7 +29,10 @@ export const firebaseConfig = {
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ForgotComponent
+    ForgotComponent,
+    AdminComponent,
+    DashboardComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,
