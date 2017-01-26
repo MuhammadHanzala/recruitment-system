@@ -17,7 +17,8 @@ export class CompanyComponent implements OnInit {
     positions: '',
     description: '',
     id: '',
-    name: ''
+    name: '',
+    request: 0
   }
 
 
@@ -39,9 +40,11 @@ export class CompanyComponent implements OnInit {
     console.log(this.newJob);
     console.log(this.jobs$);
     this.jobs$.push(this.newJob);
-    this.newJob = { title: '', positions: '', description: '', id: '', name: '' }
+    this.newJob = { title: '', positions: '', description: '', id: '', name: '', request: 0 }
   }
-
+  viewJob(job) {
+    this.authService.viewJob(job);
+  }
 
   findUser(email) {
     console.log(this.jobs$);

@@ -1,6 +1,6 @@
 <md-sidenav-container class="example-sidenav-fab-container" style="height: 100vh;">
 
-<md-sidenav #sidenav mode="push" opened="false" style="width: 100%;">
+<md-sidenav #sidenav mode="over" opened="false" style="width: 100%;">
 
 
 <div class="full-width">
@@ -26,7 +26,7 @@
     </md-input-container>
   </p>
 
-  <button md-raised-button (click)="addJob()" routerLinkActive="active" color="primary">Apply</button>
+  <button md-raised-button (click)="addJob()" routerLinkActive="active" color="primary">Post Job</button>
 
 
 </div>
@@ -34,15 +34,21 @@
 </md-sidenav>
 
 
+
 <div class="example-scrolling-content">
   <md-list>
-    <h2 md-header>Jobs <span class="spacer"></span> <button md-fab color="primary" (click)="sidenav.open()"><md-icon>add</md-icon></button>      </h2>
+    <h2 md-header>
+      Jobs
+      <span class="spacer"></span>
+      <button md-fab color="primary" (click)="sidenav.open()"><md-icon>add</md-icon></button>
+    </h2>
 
-    <md-list-item *ngFor="let job1 of jobs$ | async">
+    <md-list-item *ngFor="let job1 of jobs$ | async" (click)="viewJob(job1)">
       <md-icon md-list-avatar>folder</md-icon>
       <h4 md-line>{{job1.title}}</h4>
-      <p md-line> Posted At: {{job1.postedat | date}} | Positions : {{job1.positions}} | Company : {{job1.name}} | Description : {{job1.description}}
+      <p md-line> Applications: {{job1.request}} | Posted At: {{job1.postedat | date}} | Positions : {{job1.positions}} | Company : {{job1.name}} | Description : {{job1.description}}
       </p>
+      
     </md-list-item>
   </md-list>
 
