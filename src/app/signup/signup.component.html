@@ -1,40 +1,46 @@
-<md-card>
-  <!--<md-card-subtitle>Login</md-card-subtitle>-->
-  <md-card-title>Signup</md-card-title>
-  <md-card-content>
-    <form>
-      <p>
+<md-grid-list cols="3">
+  <md-grid-tile></md-grid-tile>
+  <md-grid-tile>
+    <md-card class="full-width">
+      <!--<md-card-subtitle>Login</md-card-subtitle>-->
+      <md-card-title>Signup</md-card-title>
+      <md-card-content>
+        <form>
+          <p>
 
-        <md-input-container>
-          <input md-input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="Full Name">
-        </md-input-container>
-      </p>
-      <p>
+            <md-input-container class="full-width">
+              <input md-input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="Full Name">
+            </md-input-container>
+          </p>
+          <p>
 
-        <md-input-container>
-          <input md-input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Email">
-        </md-input-container>
-      </p>
-      <p>
+            <md-input-container class="full-width">
+              <input md-input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Email">
+            </md-input-container>
+          </p>
+          <p>
 
-        <md-input-container>
-          <input md-input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password">
-        </md-input-container>
+            <md-input-container class="full-width">
+              <input md-input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" type="password">
+            </md-input-container>
 
-      </p>
+          </p>
 
-      <p>
-        <md-select placeholder="Favorite food" [(ngModel)]="selectedType" name="food">
-          <md-option *ngFor="let food of type" [value]="food.value">
-            {{food.viewValue}}
-          </md-option>
-        </md-select>
-      </p>
-    </form>
+          <p>
+            <md-select placeholder="Favorite food" [(ngModel)]="selectedType" name="food" class="full-width">
+              <md-option *ngFor="let food of type" [value]="food.value">
+                {{food.viewValue}}
+              </md-option>
+            </md-select>
+          </p>
+        </form>
 
-  </md-card-content>
-  <md-card-actions>
-    <button md-button (click)="signup()">Signup</button>
-    <button md-button>SHARE</button>
-  </md-card-actions>
-</md-card>
+      </md-card-content>
+      <md-card-actions>
+        <button md-button (click)="signup()" class="full-width">Signup</button>
+      </md-card-actions>
+    </md-card>
+
+  </md-grid-tile>
+  <md-grid-tile></md-grid-tile>
+</md-grid-list>

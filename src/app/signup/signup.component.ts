@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
     { value: 'company', viewValue: 'Company' }
   ];
 
-  constructor(public fb: AngularFire, private router: Router) {
+  constructor(private fb: AngularFire, private router: Router) {
     this.email = 'adnanshurta@gmail.com'
     this.password = 'password'
 
@@ -35,16 +35,16 @@ export class SignupComponent implements OnInit {
       .then(data => {
         console.log('SignUP', data);
         // Email and password
-        this.fb.auth.login(
-          {
-            email: this.email,
-            password: this.password,
-          },
-          {
-            provider: AuthProviders.Password,
-            method: AuthMethods.Password,
-          })
-          .then(data => {
+        // this.fb.auth.login(
+        //   {
+        //     email: this.email,
+        //     password: this.password,
+        //   },
+        //   {
+        //     provider: AuthProviders.Password,
+        //     method: AuthMethods.Password,
+        //   })
+        //   .then(data => {
             console.log('Login', data);
             const itemObservable = this.fb.database.object('/users/'+data.uid);
             itemObservable.set({ fullname: this.name, email: this.email, type: this.selectedType })
@@ -53,13 +53,14 @@ export class SignupComponent implements OnInit {
                 // this.router.navigate(['/login']);
 
               });
-          })
+          // })
 
       })
       .catch(function (error) {
         // Handle Errors here.
         // var errorCode = error.code;
         var errorMessage = error.message;
+        alert(errorMessage);
         console.log(error);
         // ...
       });
