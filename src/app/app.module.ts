@@ -14,6 +14,10 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CompanyComponent } from './company/company.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+import { AuthService } from './auth.service';
+import { LoggedInGuardService } from './logged-in-guard.service';
 
 // Must export the config
 export const firebaseConfig = {
@@ -32,7 +36,8 @@ export const firebaseConfig = {
     ForgotComponent,
     AdminComponent,
     DashboardComponent,
-    CompanyComponent
+    CompanyComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,12 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     MaterialModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthService,
+    LoggedInGuardService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
