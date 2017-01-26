@@ -1,3 +1,50 @@
-<p>
-  company works!
-</p>
+<md-sidenav-container class="example-sidenav-fab-container" style="height: 100vh;">
+
+<md-sidenav #sidenav mode="push" opened="false" style="width: 100%;">
+
+
+<div class="full-width">
+
+  <!--<h3>Job Title : {{job.title}}</h3>
+        <h3>Job Company : {{job.name}}</h3>
+        <h3>Job Positions : {{job.positions}}</h3>
+        <h3>Job Posted At : {{job.postedat}}</h3>
+        <h3>Job Description : {{job.description}}</h3>-->
+  <p>
+    <md-input-container class="full-width">
+      <input md-input [(ngModel)]="newJob.title" placeholder="Title" type="text">
+    </md-input-container>
+  </p>
+  <p>
+    <md-input-container class="full-width">
+      <input md-input [(ngModel)]="newJob.positions" placeholder="Positions" type="text">
+    </md-input-container>
+  </p>
+  <p>
+    <md-input-container class="full-width">
+      <input md-input [(ngModel)]="newJob.description" placeholder="Description" type="text">
+    </md-input-container>
+  </p>
+
+  <button md-raised-button (click)="addJob()" routerLinkActive="active" color="primary">Apply</button>
+
+
+</div>
+
+</md-sidenav>
+
+
+<div class="example-scrolling-content">
+  <md-list>
+    <h2 md-header>Jobs <span class="spacer"></span> <button md-fab color="primary" (click)="sidenav.open()"><md-icon>add</md-icon></button>      </h2>
+
+    <md-list-item *ngFor="let job1 of jobs$ | async">
+      <md-icon md-list-avatar>folder</md-icon>
+      <h4 md-line>{{job1.title}}</h4>
+      <p md-line> Posted At: {{job1.postedat | date}} | Positions : {{job1.positions}} | Company : {{job1.name}} | Description : {{job1.description}}
+      </p>
+    </md-list-item>
+  </md-list>
+
+</div>
+</md-sidenav-container>
