@@ -3,13 +3,21 @@
   <li class="text" *ngFor="let item of items$ | async">
     {{item.$value}}
   </li>
-</ul>-->
+</ul>
+
+
+<md-icon>home</md-icon>-->
+
+
+
 <md-toolbar color="primary">
-  <!--<md-toolbar-row>-->
-    <span>Recruitment System</span>
-  <!--</md-toolbar-row>-->
+  <span>Recruitment System</span>
+  <span class="spacer"></span>
+  <button md-raised-button *ngIf="!isLoggedIn()" routerLink="/login" routerLinkActive="active" color="primary">Login</button>
+  <button md-raised-button *ngIf="!isLoggedIn()" routerLink="/signup" routerLinkActive="active" color="primary">Signup</button>
+  <button md-raised-button *ngIf="isLoggedIn()" (click)="dashboard()" routerLinkActive="active" color="primary">Home</button>
+  <button md-raised-button *ngIf="isLoggedIn()" (click)="signOut()" color="primary">Logout</button>
+  
 </md-toolbar>
-<button md-button routerLink="/login" routerLinkActive="active" color="primary">Login</button>
-<button md-raised-button routerLink="/signup" routerLinkActive="active" color="primary">Signup</button>
 
 <router-outlet></router-outlet>

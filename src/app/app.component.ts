@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
+import { AuthService } from './auth.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,13 +12,37 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class AppComponent {
   title = 'app works!';
   items$: FirebaseListObservable<any[]>;
+  roles: Object;
 
-  
-  constructor(af: AngularFire) {
-    this.items$ = af.database.list('/list');
-    /*const promise = af.database.object('/item').remove();
-    promise
-      .then(data => console.log('success', data))
-      .catch(err => console.log(err, 'You dont have access!'));*/
+
+  constructor(private fb: AngularFire, private authService: AuthService, private router: Router) {
+
+    this.roles = {
+      admin: 'admin',
+      company: 'company',
+      student: 'student'
+    };
+
+  }
+
+
+  signOut() {
+    this.authService.unsubscribeUserDetail$();
+    this.fb.auth.logout()
+      .then(
+      data => {
+        this.router.navigate(['/login'])
+      },
+      error => console.log('Error in Logout', error)
+      );
+  }
+
+
+  dashboard() {
+    console.log(this.fb.auth.getAuth());
+    if (this.authService.getUser()) this.router.navigate(['/' + this.roles[this.authService.getUserDetail().type]]);
+  }
+  isLoggedIn(){
+    return !!this.authService.getUser();
   }
 }
