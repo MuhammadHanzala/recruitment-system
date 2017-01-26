@@ -17,7 +17,7 @@ export class AuthService {
       data => {
         if (data) {
           this.setUser(data);
-          
+
           let userDetailS = this.fb.database.object('/users/' + data.uid, { preserveSnapshot: true });
           this.userDetail$ = userDetailS.subscribe(snapshot => {
             this.userDetail = snapshot.val();
@@ -25,7 +25,7 @@ export class AuthService {
         }
         else {
           this.setUser(null);
-          if(this.userDetail$) this.userDetail$.unsubscribe();
+          if (this.userDetail$) this.userDetail$.unsubscribe();
         }
       },
       error => {
@@ -46,10 +46,12 @@ export class AuthService {
   getUserDetail() {
     return this.userDetail;
   }
-  unsubscribeUserDetail$(){
-    if(this.userDetail$) this.userDetail$.unsubscribe();
+  unsubscribeUserDetail$() {
+    if (this.userDetail$) this.userDetail$.unsubscribe();
   }
+  viewJob(job) {
 
+  }
 
 
 }
