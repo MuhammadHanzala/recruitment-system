@@ -1,3 +1,41 @@
-<p>
-  dashboard works!
-</p>
+<md-sidenav-container class="example-sidenav-fab-container" style="height: 100vh;">
+
+<md-sidenav #sidenav mode="push" opened="false" style="width: 400px;">
+
+
+<div class="example-scrolling-content">
+  <md-card class="full-width" style="width:86%;">
+<!--<md-card-subtitle>Login</md-card-subtitle>-->
+<md-card-title>Signup</md-card-title>
+<md-card-content>
+
+  <h3>Job Title : {{job.title}}</h3>
+  <h3>Job Company : {{job.name}}</h3>
+  <h3>Job Positions : {{job.positions}}</h3>
+  <h3>Job Posted At : {{job.postedat}}</h3>
+  <h3>Job Description : {{job.description}}</h3>
+
+</md-card-content>
+<md-card-actions>
+  <button md-raised-button (click)="sidenav.close()" class="full-width" routerLinkActive="active" color="primary">Apply</button>
+</md-card-actions>
+</md-card>
+</div>
+
+</md-sidenav>
+
+
+<div class="example-scrolling-content">
+  <md-list>
+    <h2 md-header>Jobs</h2>
+    <md-list-item *ngFor="let job of jobs$">
+      <h4 md-line>{{job.title}}</h4>
+      <p md-line> Posted At: {{job.postedat | date}} | Positions : {{job.positions}} | Company : {{job.name}} | Description : {{job.description}}
+      </p>
+      <button md-raised-button (click)="sidenav.open();apply(job)" routerLinkActive="active" color="primary">Apply</button>
+      <!--<button md-raised-button (click)="apply(job)" routerLinkActive="active" color="primary">Apply</button>-->
+
+    </md-list-item>
+  </md-list>
+</div>
+</md-sidenav-container>
