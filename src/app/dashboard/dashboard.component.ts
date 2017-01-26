@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,7 @@ export class DashboardComponent implements OnInit {
     description: ''
   };
 
-  constructor(private fb: AngularFire) {
+  constructor(private fb: AngularFire, private authService: AuthService) {
     fb.database.list('/jobs')
       .subscribe(data => {
         console.log(data);
@@ -29,8 +30,18 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  canApply(job) {
+    
+  }  
   apply(job) {
     console.log(job);
+    const items = this.fb.database.list('/job/' + job.$key + '/request');
+    items.push({
+      id: this.authService.getUser()['uid'],
+      name: this.authService.getUserDetail()['fullname']
+    });
+
+    
     this.job = job;
   }
 
